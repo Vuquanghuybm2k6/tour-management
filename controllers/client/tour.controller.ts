@@ -11,6 +11,7 @@ export const index = async (req:Request, res:Response)=>{
   })
   console.log(tours)
   res.render("client/pages/tours/index",{ 
+    pageTitle: "Danh sách tour",
     tours
   })
 }
