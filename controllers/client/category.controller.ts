@@ -1,5 +1,7 @@
 import {Request, Response} from 'express'
 import Category from '../../models/category.model'
+
+// [GET]: /tours/:slugCategory
 export const index = async (req:Request, res:Response)=>{
   // SELECT * FROM categories WHERE deleted = false AND  status = "active"
   const categories = await Category.findAll({
