@@ -9,7 +9,7 @@ block main
         .col-8
         .col-4.text-right 
           a(
-            href = `${prefixAdmin}/categories/create`
+            href = `${prefixAdmin}/tours/create`
             class = "btn btn-outline-success"
           ) + Thêm mới
         table(class = "table table-hover table-sm" checkbox-multi)
@@ -18,15 +18,26 @@ block main
               th STT
               th Hình ảnh 
               th Tiêu đề
+              th Giá
+              th % Giảm giá
+              th Giá đặc biệt
+              th Còn lại
+              th Vị trí
               th Trạng thái
               th Hành động
           tbody 
-            each item, index in categories
+            each item, index in tours
               tr 
                 td #{index+1}
                 td 
                   img(src = item.avatar, alt = item.title width = "100px" height = "auto")
                 td #{item.title}
+                td #{item.price.toLocaleString()}đ
+                td #{item.discount}
+                td #{item.price_special.toLocaleString()}
+                td #{item.stock}
+                td #{item.position}
+                
                 td
                   if (item.status =="active")
                     a(
@@ -45,6 +56,6 @@ block main
                       button-change-status
                       ) Dừng hoạt động
                 td 
-                  a(class = "btn btn-secondary btn-sm mr-1" href =`${prefixAdmin}/categories/detail/${item._id}`) Chi tiết
-                  a(class = "btn btn-warning btn-sm mr-1" href =`${prefixAdmin}/categories/edit/${item._id}`) Sửa
+                  a(class = "btn btn-secondary btn-sm mr-1" href =`${prefixAdmin}/tours/detail/${item._id}`) Chi tiết
+                  a(class = "btn btn-warning btn-sm mr-1" href =`${prefixAdmin}/tours/edit/${item._id}`) Sửa
                   button(class = "btn btn-danger btn-sm" button-delete data-id = item._id) Xóa
