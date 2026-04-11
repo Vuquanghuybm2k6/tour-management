@@ -46,6 +46,7 @@ const elementTotalPrice = document.querySelector("[total-price]")
 elementTotalPrice.innerHTML = totalPrice.toLocaleString()
 
 deleteItemInCart();
+updateQuantityInCart();
 })
 }
 // End Draw tour list
@@ -68,6 +69,27 @@ const deleteItemInCart = () => {
     });
 };
 // End Delete product in  cart
+
+// Update quantity in  cart
+const updateQuantityInCart = () => {
+    const listInputUpdate = document.querySelectorAll("[list-tour] input[item-id]");
+    listInputUpdate.forEach(input => {
+        input.addEventListener("change", () => {
+            const tourId = input.getAttribute("item-id");
+            const quantity = parseInt(input.value)
+
+            const cart = JSON.parse(localStorage.getItem("cart"));
+
+            const tourUpdate = cart.find(item=>item.tourId == tourId)
+            tourUpdate.quantity = quantity
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            drawListTour()
+        });
+    });
+};
+// End Update quantity in  cart
+
 
 
 // Get data and render to layout
