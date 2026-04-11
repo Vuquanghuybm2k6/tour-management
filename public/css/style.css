@@ -187,7 +187,7 @@ form[form-add-to-cart] {
   background: #218838;
 }
 
-/* ⚠ fix lỗi bạn đang viết tn-success -> sai */
+
 .btn.tn-success {
   background: #28a745;
   color: #fff;
@@ -258,3 +258,39 @@ form[form-add-to-cart] {
   object-fit: cover;
   border-radius: 6px;
 }
+
+[alert-add-cart-success]{
+  position: fixed;
+  top: 70px;
+  right: 15px;
+  z-index: 9999;
+}
+
+[alert-add-cart-success].alert-hidden {
+  animation-name: alert-hidden;
+  animation-fill-mode: both;
+}
+
+@keyframes alert-hidden {
+  from {
+    right: 15px;
+  }
+  to {
+    right: -100%;
+    display: none;
+  }
+}
+
+[alert-add-cart-success] [close-alert] {
+  background: #ffffcc;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* End Alert Add Cart Success */
