@@ -1,6 +1,7 @@
 
-// Get data and render to layout
-fetch("http://localhost:3000/cart/list-json", {
+// Draw tour list
+const drawListTour = () =>{
+  fetch("http://localhost:3000/cart/list-json", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
@@ -38,10 +39,38 @@ fetch("http://localhost:3000/cart/list-json", {
 });
 const listTour = document.querySelector("[list-tour]")
 listTour.innerHTML = htmlsArray.join("")
+
 // Caculate the total amount
 const totalPrice = data.tours.reduce((sum,item)=>sum+item.total, 0)
 const elementTotalPrice = document.querySelector("[total-price]")
 elementTotalPrice.innerHTML = totalPrice.toLocaleString()
-})
 
+deleteItemInCart();
+})
+}
+// End Draw tour list
+
+
+// Delete product in  cart
+const deleteItemInCart = () => {
+    const listBtnDelete = document.querySelectorAll("[btn-delete]");
+    listBtnDelete.forEach(button => {
+        button.addEventListener("click", () => {
+            const tourId = button.getAttribute("btn-delete");
+
+            const cart = JSON.parse(localStorage.getItem("cart"));
+
+            const newCart = cart.filter(item => item.tourId != tourId);
+
+            localStorage.setItem("cart", JSON.stringify(newCart));
+            drawListTour()
+        });
+    });
+};
+// End Delete product in  cart
+
+
+// Get data and render to layout
+
+drawListTour()
 // End Get data and render to layout
