@@ -118,7 +118,7 @@ if (formOrder) {
             cart: cart
         };
 
-        fetch("/orders",{
+        fetch("/order",{
           method: "POST",
           headers: {
             "Content-Type": "application/json"
