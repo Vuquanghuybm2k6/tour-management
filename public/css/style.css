@@ -43,3 +43,218 @@
     color: green;
 }
 /* End Box-head */
+
+/* ===== Layout chung ===== */
+.container.my-3 {
+  max-width: 1200px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+/* ===== Swiper Main ===== */
+.imagesMain {
+  width: 100%;
+  height: 420px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.imagesMain .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Button next/prev */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 18px;
+}
+
+/* ===== Thumbnail ===== */
+.imagesThumb {
+  width: 100%;
+  height: 110px;
+  margin-top: 10px;
+}
+
+.imagesThumb .swiper-slide {
+  opacity: 0.4;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.imagesThumb .swiper-slide-thumb-active {
+  opacity: 1;
+  border: 2px solid #007bff;
+}
+
+.imagesThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== Right info ===== */
+.inner-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.inner-barcode {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.inner-time-start,
+.inner-stock {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+/* ===== Price ===== */
+.inner-price-special {
+  font-size: 22px;
+  font-weight: 700;
+  color: #e63946;
+  margin-top: 10px;
+}
+
+.inner-price {
+  font-size: 16px;
+  color: #888;
+  text-decoration: line-through;
+}
+
+.inner-percent {
+  display: inline-block;
+  background: #ffeb3b;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* ===== Form ===== */
+form[form-add-to-cart] {
+  margin-top: 15px;
+}
+
+.form-controller {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-success {
+  background: #28a745;
+  color: #fff;
+  border: none;
+}
+
+.btn-success:hover {
+  background: #218838;
+}
+
+/* ⚠ fix lỗi bạn đang viết tn-success -> sai */
+.btn.tn-success {
+  background: #28a745;
+  color: #fff;
+}
+
+/* ===== Info section ===== */
+.inner-information {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.inner-label {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  border-left: 4px solid #007bff;
+  padding-left: 10px;
+}
+
+.inner-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .imagesMain {
+    height: 300px;
+  }
+
+  .inner-title {
+    font-size: 20px;
+  }
+}
+.imagesMain {
+  width: 100%;
+  height: 400px;
+}
+
+.imagesMain .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.imagesThumb {
+  margin-top: 10px;
+}
+
+.imagesThumb .swiper-slide {
+  height: 100px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.imagesThumb .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.imagesThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}

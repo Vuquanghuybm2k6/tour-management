@@ -5,11 +5,24 @@ block main
   .container.my-3 
     .row 
       .col-6
-        if(tourDetail.imgaes)
+        if(tourDetail.images)
           .inner-immages
-            each image in tourDetail.images 
-              .inner-image
-                img(src = image)
+            div(class="swiper imagesMain")
+              div(class="swiper-wrapper")
+                each image in tourDetail.images 
+                  div(class="swiper-slide")
+                    .inner-image
+                      img(src = image)
+              div(class = "swiper-button-next")
+              div(class = "swiper-button-prev")
+            
+
+            div(class="swiper imagesThumb")
+              div(class="swiper-wrapper")
+                each image in tourDetail.images 
+                  div(class="swiper-slide")
+                    .inner-image
+                      img(src = image)
       .col-6 
         .inner-title #{tourDetail.title}
         .inner-barcode Mã tour: #{tourDetail.code}
