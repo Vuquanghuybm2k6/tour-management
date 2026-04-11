@@ -16,7 +16,7 @@ interface InfoTour{
   discount: number,
   timeStart: number
 }
-// [GET]: /orders
+// [POST]: /orders
 export const order = async (req:Request, res:Response)=>{
   const data = req.body
   // Save data into orders table
@@ -64,3 +64,10 @@ export const order = async (req:Request, res:Response)=>{
     orderCode: code
   })
 }
+
+// [GET]: /order/success
+ export const success = async(req: Request, res: Response)=>{
+  res.render("client/pages/order/success",{
+    pageTitle: "Đặt hàng thành công"
+  })
+ }
