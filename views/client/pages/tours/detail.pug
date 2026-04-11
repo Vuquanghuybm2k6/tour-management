@@ -1,21 +1,27 @@
 extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
+include ../../mixins/moment.pug
 block main 
   .container.my-3 
     .row 
       .col-6
-        .inner-immages
-          img(src = )
+        if(tourDetail.imgaes)
+          .inner-immages
+            each image in tourDetail.images 
+              .inner-image
+                img(src = image)
       .col-6 
-        .inner-title
-        .inner-barcode 
-        .inner-stock 
-        .inner-pirce-special 
-        .inner-price 
-        .inner-percent 
+        .inner-title #{tourDetail.title}
+        .inner-barcode Mã tour: #{tourDetail.code}
+        .inner-time-start Lịch khởi hành: 
+          +formatDateTime(tourDetail.timeStart)
+        .inner-stock Còn lại #{tourDetail.stock} chỗ
+        .inner-price-special #{tourDetail.price_special.toLocaleString()}đ
+        .inner-price #{tourDetail.price.toLocaleString()}đ
+        .inner-percent Giảm tới #{tourDetail.discount}%
         form(
           form-add-to-cart 
-          tour-id = 
+          tour-id = tourDetail.id
         )
           input(
             class = "form-controller mb-2"
@@ -23,7 +29,7 @@ block main
             name = "quantity"
             value ="1"
             min ="1"
-            max = "10"
+            max = tourDetail.stock
           )
           button(
             type = "submit"
@@ -34,10 +40,10 @@ block main
         .inner-information 
           .inner-label Thông tin tour 
           .inner-text 
-            | 
+            | !{tourDetail.information}
       .col-12  
         .inner-information 
           .inner-label Lịch trình tour 
           .inner-text 
-            | 
+            | !{tourDetail.schedule}
       
