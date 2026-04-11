@@ -1,7 +1,21 @@
 import {Request, Response} from 'express'
 import Order from '../../models/order.model'
+import Tour from '../../models/tour.model'
 import { generateOrderCode } from '../../helpers/generate'
-
+import OrderItem from '../../models/order-item.model'
+interface DataItem {
+  orderId: number,
+  tourId: number,
+  quantity: number,
+  price?: number,
+  discount?: number,
+  timeStart?: number
+}
+interface InfoTour{
+  price: number,
+  discount: number,
+  timeStart: number
+}
 // [GET]: /orders
 export const order = async (req:Request, res:Response)=>{
   const data = req.body
@@ -23,7 +37,27 @@ export const order = async (req:Request, res:Response)=>{
       id: orderId
     }
   })
-  console.log(order)
+  // Save data into orders_item table
+  for(const item of data.cart){
+    const dataItem: DataItem = {
+      orderId: orderId,
+      tourId: item.tourId,
+      quantity: item.quantity
+    }
+    const infoTour = await Tour.findOne({
+      where: {
+        id: item.tourId,
+        deleted: false,
+        status: "active"
+      },
+      raw: true
+    }) as InfoTour | null;
+    if(!infoTour) continue
+    dataItem["price"] = infoTour["price"]
+    dataItem["discount"] = infoTour["discount"]
+    dataItem["timeStart"] = infoTour["timeStart"]
+    await OrderItem.create(dataItem as any)
+  }
   res.json({
     code:200,
     message: "Đặt hàng thành công",
