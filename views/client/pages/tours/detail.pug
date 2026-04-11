@@ -1,0 +1,43 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+block main 
+  .container.my-3 
+    .row 
+      .col-6
+        .inner-immages
+          img(src = )
+      .col-6 
+        .inner-title
+        .inner-barcode 
+        .inner-stock 
+        .inner-pirce-special 
+        .inner-price 
+        .inner-percent 
+        form(
+          form-add-to-cart 
+          tour-id = 
+        )
+          input(
+            class = "form-controller mb-2"
+            type = "number"
+            name = "quantity"
+            value ="1"
+            min ="1"
+            max = "10"
+          )
+          button(
+            type = "submit"
+            class = "btn tn-success btn-block"
+          ) Thêm vào giỏ hàng
+    .row 
+      .col-12  
+        .inner-information 
+          .inner-label Thông tin tour 
+          .inner-text 
+            | 
+      .col-12  
+        .inner-information 
+          .inner-label Lịch trình tour 
+          .inner-text 
+            | 
+      

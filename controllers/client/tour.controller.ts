@@ -2,6 +2,7 @@ import {Request, Response} from 'express'
 import Tour from '../../models/tour.model'
 import sequelize from '../../config/database'
 import { QueryTypes } from 'sequelize'
+
 export const index = async (req:Request, res:Response)=>{
   const slugCategory = req.params.slugCategory
   // SELECT * FROM tours WHERE deleted = false AND  status = "active"
@@ -46,5 +47,13 @@ export const index = async (req:Request, res:Response)=>{
   res.render("client/pages/tours/index",{ 
     pageTitle: "Danh sách tour",
     tours
+  })
+}
+
+// [GET]: /tours/detail/:slugTour
+export const detail = async (req:Request, res:Response)=>{
+  const slugTour = req.params.slugTour
+  res.render("client/pages/tours/detail",{ 
+    pageTitle: "Chi tiết tour",
   })
 }
