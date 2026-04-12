@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../config/database";
-
+import slugify from "slugify"
 const Tour = sequelize.define("Tour", {
   id: {
     type: DataTypes.INTEGER, 
@@ -44,7 +44,7 @@ const Tour = sequelize.define("Tour", {
   },
   slug:{
     type: DataTypes.STRING(255),
-    allowNull: false
+    allowNull: true
   },
   deleted:{
     type: DataTypes.BOOLEAN,
@@ -56,5 +56,22 @@ const Tour = sequelize.define("Tour", {
 }, {
   tableName: "tours",
   timestamps: true
-}) // Tên model muốn đặt, Danh sách các kiểu dữ liệu, Tên bảng
+}) 
+// Tour.beforeCreate((tour)=>{
+//   tour["slug"] = slugify(`${tour["title"]}-${Date.now()}`,{
+//     lower:true,
+//     strict: true,
+//   })
+// }) 
+// phần code này lỗi  sửa thành code dưới đây
+Tour.beforeCreate((tour) => {
+  const title = tour.getDataValue("title") as string;
+  tour.setDataValue(
+    "slug",
+    slugify(`${title}-${Date.now()}`, {
+      lower: true,
+      strict: true,
+    })
+  );
+});
 export default Tour

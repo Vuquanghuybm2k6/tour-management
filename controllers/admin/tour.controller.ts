@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Tour from "../../models/tour.model";
 import Category from "../../models/category.model";
 import { generateTourCode } from "../../helpers/generate";
+import { systemConfig } from "../../config/system";
 
 // [GET] /admin/tours/
 export const index = async (req: Request, res: Response) => {
@@ -68,5 +69,7 @@ export const createPost = async (req: Request, res: Response) => {
     position: req.body.position,
     status: req.body.status,
   }
+  await Tour.create(dataTour)
+  res.redirect(`${systemConfig.prefixAdmin}/tours`)
 };
 

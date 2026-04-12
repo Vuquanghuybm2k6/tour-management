@@ -4,7 +4,7 @@ block main
   h1(class="mb-4") #{pageTitle}
 
   form(
-    action=`/${prefixAdmin}/tours/create`
+    action=`${prefixAdmin}/tours/create`
     method="POST"
   )
     div.form-group
@@ -51,7 +51,7 @@ block main
 
     div.form-group
       label(for="position") Vị trí
-      input.form-control(type="number" name="postion" id="postion" placeholder="Tự động tăng" min ="1")
+      input.form-control(type="number" name="position" id="position" placeholder="Tự động tăng" min ="1")
 
     div(class="form-group form-check form-check-inline")
       input(
