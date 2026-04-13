@@ -3,6 +3,7 @@ import Tour from "../../models/tour.model";
 import Category from "../../models/category.model";
 import { generateTourCode } from "../../helpers/generate";
 import { systemConfig } from "../../config/system";
+import TourCategory from "../../models/tour-category.model";
 
 // [GET] /admin/tours/
 export const index = async (req: Request, res: Response) => {
@@ -62,14 +63,24 @@ export const createPost = async (req: Request, res: Response) => {
   const dataTour = {
     title: req.body.title,
     code: code,
-    price: parseInt(req.body.price),
-    discount: parseInt(req.body.discount),
-    stock: parseInt(req.body.stock),
+    price: parseInt(req.body.price)||0,
+    discount: parseInt(req.body.discount)||0,
+    stock: parseInt(req.body.stock)||0,
     timeStart: req.body.timeStart,
     position: req.body.position,
     status: req.body.status,
   }
-  await Tour.create(dataTour)
+  const categoryId = Number(req.body.category_id);
+  if (!categoryId) {
+    return res.status(400).send("Vui lòng chọn danh mục");
+  }
+  const tour = await Tour.create(dataTour) as any
+  const tourId = tour["id"]
+  const dataTourCategory = {
+    tour_id: tourId,
+    category_id: categoryId
+  }
+  await TourCategory.create(dataTourCategory)
   res.redirect(`${systemConfig.prefixAdmin}/tours`)
 };
 
