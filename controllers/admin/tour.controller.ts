@@ -63,6 +63,7 @@ export const createPost = async (req: Request, res: Response) => {
   const dataTour = {
     title: req.body.title,
     code: code,
+    images: JSON.stringify(req.body.images),
     price: parseInt(req.body.price)||0,
     discount: parseInt(req.body.discount)||0,
     stock: parseInt(req.body.stock)||0,
