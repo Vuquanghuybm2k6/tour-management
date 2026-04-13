@@ -59,6 +59,22 @@ block main
     div.form-group
       label(for="timeStart") Lịch khởi hành
       input.form-control(type="datetime-local" name="timeStart" id="timeStart")
+    div(class="form-group")
+      label(for="information") Thông tin tour
+      textarea(
+      class="form-control textarea-mce"
+      id="information"
+      name="information"
+      )
+
+    div(class="form-group")
+      label(for="schedule") Lịch trình tour
+      textarea(
+      class="form-control textarea-mce"
+      id="schedule"
+      name="schedule"
+      )
+
 
     div.form-group
       label(for="position") Vị trí

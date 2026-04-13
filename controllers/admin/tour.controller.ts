@@ -70,6 +70,8 @@ export const createPost = async (req: Request, res: Response) => {
     timeStart: req.body.timeStart,
     position: req.body.position,
     status: req.body.status,
+    information: req.body.information,
+    shedule: req.body.schedule
   }
   const categoryId = Number(req.body.category_id);
   if (!categoryId) {
